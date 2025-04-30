@@ -139,7 +139,7 @@ class WixBase:
         # The heuristics to generate a valid version can get
         # very complicated, so we leave it to the user
         url = 'https://docs.microsoft.com/en-us/windows/desktop/Msi/productversion'
-        versions = (version.split('.', 3) + ['0', '0', '0'])[:3]
+        versions = (version.split('.', 4) + ['0', '0', '0', '0'])[:4]
         for idx, val in enumerate(versions):
             i = int(val)
             if idx in [0, 1] and i > 255:
