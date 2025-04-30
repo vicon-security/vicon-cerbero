@@ -1,0 +1,49 @@
+From e3dd7e324a36f7051f3234596e885677776b280a Mon Sep 17 00:00:00 2001
+From: smomin7 <smomin@vicon-security.com>
+Date: Mon, 28 Apr 2025 16:08:28 +0530
+Subject: [PATCH] Vicon plugins needed change.
+
+---
+ recipes/gst-plugins-bad-1.0.recipe | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/recipes/gst-plugins-bad-1.0.recipe b/recipes/gst-plugins-bad-1.0.recipe
+index e7adab64..a81efaa7 100644
+--- a/recipes/gst-plugins-bad-1.0.recipe
++++ b/recipes/gst-plugins-bad-1.0.recipe
+@@ -48,6 +48,8 @@ class Recipe(custom.GStreamer):
+                      'webrtc': 'enabled',
+                      'webrtcdsp': 'enabled',
+                      'zbar': 'enabled',
++                     'onvif': 'enabled',
++					 'vicondewarp': 'enabled',
+                      # disabled plugins
+                      'amfcodec': 'disabled',
+                      'asio': 'disabled',
+@@ -358,6 +360,7 @@ class Recipe(custom.GStreamer):
+              '%(libdir)s/gstreamer-1.0/libgstsrtp%(mext)s',
+              '%(libdir)s/gstreamer-1.0/libgstsrt%(mext)s',
+              '%(libdir)s/gstreamer-1.0/libgstwebrtc%(mext)s',
++             '%(libdir)s/gstreamer-1.0/libgstrtponvif%(mext)s',
+     ]
+ 
+     files_plugins_net_devel = [
+@@ -372,6 +375,7 @@ class Recipe(custom.GStreamer):
+              '%(libdir)s/gstreamer-1.0/libgstsrtp.a', '%(libdir)s/gstreamer-1.0/libgstsrtp.la',
+              '%(libdir)s/gstreamer-1.0/libgstsrt.a', '%(libdir)s/gstreamer-1.0/libgstsrt.la',
+              '%(libdir)s/gstreamer-1.0/libgstwebrtc.a', '%(libdir)s/gstreamer-1.0/libgstwebrtc.la',
++             '%(libdir)s/gstreamer-1.0/libgstrtponvif.a', '%(libdir)s/gstreamer-1.0/libgstrtponvif.la',
+     ]
+ 
+     files_plugins_net_restricted = [
+@@ -527,6 +531,7 @@ class Recipe(custom.GStreamer):
+             self.meson_options['directsound'] = 'enabled'
+             self.meson_options['winks'] = 'enabled'
+             self.meson_options['winscreencap'] = 'enabled'
++            self.enable_plugin('vicondewarp', 'sys', 'visualstudio')
+             if self.using_msvc():
+                 self.enable_plugin('wasapi2', 'sys', 'visualstudio')
+                 # This dll is used by wasapi2 and mediafoundation UWP build
+-- 
+2.40.1.windows.1
+

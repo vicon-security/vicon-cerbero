@@ -1,0 +1,25 @@
+From 6bac7978d0ae2affd7a113744cf26c2488dc2cfb Mon Sep 17 00:00:00 2001
+From: smomin7 <smomin@vicon-security.com>
+Date: Mon, 28 Apr 2025 16:11:34 +0530
+Subject: [PATCH] Changes to display 4th digit of version in control panel.
+
+---
+ cerbero/packages/wix.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cerbero/packages/wix.py b/cerbero/packages/wix.py
+index 9464112f..5f610926 100644
+--- a/cerbero/packages/wix.py
++++ b/cerbero/packages/wix.py
+@@ -139,7 +139,7 @@ class WixBase:
+         # The heuristics to generate a valid version can get
+         # very complicated, so we leave it to the user
+         url = 'https://docs.microsoft.com/en-us/windows/desktop/Msi/productversion'
+-        versions = (version.split('.', 3) + ['0', '0', '0'])[:3]
++        versions = (version.split('.', 4) + ['0', '0', '0', '0'])[:4]
+         for idx, val in enumerate(versions):
+             i = int(val)
+             if idx in [0, 1] and i > 255:
+-- 
+2.40.1.windows.1
+
