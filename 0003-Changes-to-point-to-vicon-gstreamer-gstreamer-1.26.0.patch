@@ -1,0 +1,28 @@
+From fec63fed693a99511a4d2111793604fe5ee1622a Mon Sep 17 00:00:00 2001
+From: smomin7 <smomin@vicon-security.com>
+Date: Wed, 14 May 2025 16:45:56 +0530
+Subject: [PATCH] Changes to point to vicon-gstreamer/gstreamer-1.26.0.
+
+---
+ recipes/gstreamer-1.0.recipe | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/recipes/gstreamer-1.0.recipe b/recipes/gstreamer-1.0.recipe
+index 5210756e..4166226a 100644
+--- a/recipes/gstreamer-1.0.recipe
++++ b/recipes/gstreamer-1.0.recipe
+@@ -4,7 +4,10 @@ import shutil
+ class Recipe(custom.GStreamer):
+     name = 'gstreamer-1.0'
+     btype = BuildType.MESON
+-    tarball_checksum = '1b2ee4028010c25b776effa7c396c7e3e1861b60b9417e416f4914abcdff279f'
++    #tarball_checksum = '1b2ee4028010c25b776effa7c396c7e3e1861b60b9417e416f4914abcdff279f'
++    stype = SourceType.GIT
++    remotes = {'origin': 'https://github.com/vicon-security/vicon-gstreamer.git'}
++    commit = 'origin/gstreamer-1.26.0'
+     deps = ['glib']
+     bash_completions = ['gst-inspect-1.0', 'gst-launch-1.0']
+ 
+-- 
+2.49.0.windows.1
+
