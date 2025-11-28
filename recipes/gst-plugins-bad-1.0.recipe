@@ -48,6 +48,8 @@ class Recipe(custom.GStreamer):
                      'webrtc': 'enabled',
                      'webrtcdsp': 'enabled',
                      'zbar': 'enabled',
+                     'onvif': 'enabled',
+					 'vicondewarp': 'enabled',
                      # disabled plugins
                      'amfcodec': 'disabled',
                      'asio': 'disabled',
@@ -358,6 +360,7 @@ class Recipe(custom.GStreamer):
              '%(libdir)s/gstreamer-1.0/libgstsrtp%(mext)s',
              '%(libdir)s/gstreamer-1.0/libgstsrt%(mext)s',
              '%(libdir)s/gstreamer-1.0/libgstwebrtc%(mext)s',
+             '%(libdir)s/gstreamer-1.0/libgstrtponvif%(mext)s',
     ]
 
     files_plugins_net_devel = [
@@ -372,6 +375,7 @@ class Recipe(custom.GStreamer):
              '%(libdir)s/gstreamer-1.0/libgstsrtp.a', '%(libdir)s/gstreamer-1.0/libgstsrtp.la',
              '%(libdir)s/gstreamer-1.0/libgstsrt.a', '%(libdir)s/gstreamer-1.0/libgstsrt.la',
              '%(libdir)s/gstreamer-1.0/libgstwebrtc.a', '%(libdir)s/gstreamer-1.0/libgstwebrtc.la',
+             '%(libdir)s/gstreamer-1.0/libgstrtponvif.a', '%(libdir)s/gstreamer-1.0/libgstrtponvif.la',
     ]
 
     files_plugins_net_restricted = [
@@ -527,6 +531,7 @@ class Recipe(custom.GStreamer):
             self.meson_options['directsound'] = 'enabled'
             self.meson_options['winks'] = 'enabled'
             self.meson_options['winscreencap'] = 'enabled'
+            self.enable_plugin('vicondewarp', 'sys', 'visualstudio')
             if self.using_msvc():
                 self.enable_plugin('wasapi2', 'sys', 'visualstudio')
                 # This dll is used by wasapi2 and mediafoundation UWP build
